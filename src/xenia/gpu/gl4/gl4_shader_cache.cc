@@ -10,6 +10,7 @@
 #include "xenia/gpu/gl4/gl4_shader_cache.h"
 
 #include <cinttypes>
+#include <cstring>
 
 #include "xenia/base/filesystem.h"
 #include "xenia/base/logging.h"
