@@ -6,6 +6,7 @@ test_suite("xenia-cpu-tests", project_root, ".", {
     project_root.."/third_party/gflags/src",
   },
   links = {
+    "capstone",
     "xenia-base",
     "xenia-core",
     "xenia-cpu",
@@ -13,5 +14,6 @@ test_suite("xenia-cpu-tests", project_root, ".", {
 
     -- TODO(benvanik): cut these dependencies?
     "xenia-kernel",
+    "xenia-vfs",
   },
 })

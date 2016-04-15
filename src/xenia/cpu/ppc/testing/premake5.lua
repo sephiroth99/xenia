@@ -7,6 +7,7 @@ project("xenia-cpu-ppc-tests")
   kind("ConsoleApp")
   language("C++")
   links({
+    "capstone",
     "gflags",
     "xenia-base",
     "xenia-core",
@@ -14,7 +15,8 @@ project("xenia-cpu-ppc-tests")
     "xenia-cpu-backend-x64",
 
     -- TODO(benvanik): remove these dependencies.
-    "xenia-kernel"
+    "xenia-kernel",
+    "xenia-vfs",
   })
   files({
     "ppc_testing_main.cc",
