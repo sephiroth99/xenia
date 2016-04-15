@@ -15,13 +15,16 @@
 #include "xenia/base/clock.h"
 #include "xenia/base/logging.h"
 #include "xenia/base/main.h"
-#include "xenia/base/platform_win.h"
 #include "xenia/base/profiling.h"
 #include "xenia/base/threading.h"
 #include "xenia/ui/graphics_provider.h"
 #include "xenia/ui/imgui_dialog.h"
 #include "xenia/ui/imgui_drawer.h"
 #include "xenia/ui/window.h"
+
+#if XE_PLATFORM_WIN32
+#include "xenia/base/platform_win.h"
+#endif  // XE_PLATFORM_WIN32
 
 namespace xe {
 namespace ui {
