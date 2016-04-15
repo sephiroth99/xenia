@@ -25,4 +25,12 @@ typedef struct WGLEWContextStruct WGLEWContext;
 extern "C" WGLEWContext* wglewGetContext();
 #endif  // XE_PLATFORM_WIN32
 
+#if XE_PLATFORM_LINUX
+// We avoid including glxew.h here as it includes X11 headers and pollutes the
+// global namespace. As we don't need glxew most places we only do that as
+// required.
+typedef struct GLXEWContextStruct GLXEWContext;
+extern "C" GLXEWContext* glxewGetContext();
+#endif  // XE_PLATFORM_LINUX
+
 #endif  // XENIA_UI_GL_GL_H_

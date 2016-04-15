@@ -21,8 +21,20 @@
 DECLARE_bool(thread_safe_gl);
 
 // TODO(benvanik): hide Win32 stuff.
+#if XE_PLATFORM_WIN32
 typedef struct HDC__* HDC;
 typedef struct HGLRC__* HGLRC;
+#endif  // XE_PLATFORM_WIN32
+
+#if XE_PLATFORM_LINUX
+#include "third_party/GL/glxew.h"
+
+// X11 has a lot of definitions with very generic names...
+// Redefine some of them here with more unique names.
+#undef Status
+#define XStatus int
+typedef XID XWindow;
+#endif  // XE_PLATFORM_LINUX
 
 namespace xe {
 namespace ui {
@@ -73,11 +85,21 @@ class GLContext : public GraphicsContext {
                                            const GLchar* message,
                                            GLvoid* user_param);
 
+  std::unique_ptr<GLEWContext> glew_context_;
+
+#if XE_PLATFORM_WIN32
   HDC dc_ = nullptr;
   HGLRC glrc_ = nullptr;
-
-  std::unique_ptr<GLEWContext> glew_context_;
   std::unique_ptr<WGLEWContext> wglew_context_;
+#endif  // XE_PLATFORM_WIN32
+
+#if XE_PLATFORM_LINUX
+  Display* dpy_ = nullptr;
+  XWindow win_;
+  GLXFBConfig fbc_;
+  GLXContext glrc_;
+  std::unique_ptr<GLXEWContext> glxew_context_;
+#endif  // XE_PLATFORM_LINUX
 
   Blitter blitter_;
   std::unique_ptr<GLImmediateDrawer> immediate_drawer_;
