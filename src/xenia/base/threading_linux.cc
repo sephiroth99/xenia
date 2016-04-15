@@ -9,13 +9,8 @@
 
 #include "xenia/base/threading.h"
 
-#include <pthread.h>
-#include <time.h>
-
 namespace xe {
 namespace threading {
-
-void MaybeYield() { pthread_yield(); }
 
 }  // namespace threading
 }  // namespace xe
