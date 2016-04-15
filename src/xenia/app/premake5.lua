@@ -8,8 +8,13 @@ project("xenia-app")
   targetname("xenia")
   language("C++")
   links({
+    "capstone",
     "gflags",
+    "glew",
     "imgui",
+    "libavcodec",
+    "libavutil",
+    "snappy",
     "xenia-apu",
     "xenia-apu-nop",
     "xenia-base",
@@ -19,11 +24,13 @@ project("xenia-app")
     "xenia-debug-ui",
     "xenia-gpu",
     "xenia-gpu-gl4",
+    "xenia-hid",
     "xenia-hid-nop",
     "xenia-kernel",
     "xenia-ui",
     "xenia-ui-gl",
     "xenia-vfs",
+    "xxhash",
   })
   flags({
     "WinMain",  -- Use WinMain instead of main.
