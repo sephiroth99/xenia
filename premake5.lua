@@ -53,6 +53,10 @@ filter({"configurations:Debug", "platforms:Windows"})
   linkoptions({
     "/NODEFAULTLIB:MSVCRTD",
   })
+filter({"configurations:Debug", "platforms:Linux"})
+  flags({
+    "Symbols",
+  })
 
 filter("configurations:Release")
   runtime("Release")
