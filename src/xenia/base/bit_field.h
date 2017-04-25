@@ -16,6 +16,11 @@
 
 namespace xe {
 
+template <typename T>
+struct identity {
+  typedef T type;
+};
+
 // Bitfield, where position starts at the LSB.
 template <typename T, size_t position, size_t n_bits>
 struct bf {
@@ -29,7 +34,7 @@ struct bf {
   // For enum values, we strip them down to an underlying type.
   typedef
       typename std::conditional<std::is_enum<T>::value, std::underlying_type<T>,
-                                std::identity<T>>::type::type value_type;
+                                xe::identity<T>>::type::type value_type;
   inline value_type mask() const {
     return (((value_type)~0) >> (8 * sizeof(value_type) - n_bits)) << position;
   }
