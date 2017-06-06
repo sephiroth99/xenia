@@ -25,14 +25,12 @@ project("xenia-app")
     "xenia-cpu-backend-x64",
     "xenia-debug-ui",
     "xenia-gpu",
-    "xenia-gpu-gl4",
     "xenia-gpu-null",
     "xenia-gpu-vulkan",
     "xenia-hid",
     "xenia-hid-nop",
     "xenia-kernel",
     "xenia-ui",
-    "xenia-ui-gl",
     "xenia-ui-spirv",
     "xenia-ui-vulkan",
     "xenia-vfs",
@@ -62,8 +60,10 @@ project("xenia-app")
   filter("platforms:Windows")
     links({
       "xenia-apu-xaudio2",
+      "xenia-gpu-gl4",
       "xenia-hid-winkey",
       "xenia-hid-xinput",
+      "xenia-ui-gl",
     })
 
   filter("platforms:Windows")

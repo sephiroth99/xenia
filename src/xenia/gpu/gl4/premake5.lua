@@ -21,7 +21,6 @@ project("xenia-gpu-gl4")
   includedirs({
     project_root.."/third_party/gflags/src",
   })
-  filter("platforms:Windows")
   local_platform_files()
 
 -- TODO(benvanik): kill this and move to the debugger UI.
@@ -61,7 +60,6 @@ project("xenia-gpu-gl4-trace-viewer")
   includedirs({
     project_root.."/third_party/gflags/src",
   })
-  filter("platforms:Windows")
   files({
     "gl4_trace_viewer_main.cc",
     "../../base/main_"..platform_suffix..".cc",
@@ -112,7 +110,6 @@ project("xenia-gpu-gl4-trace-dump")
   includedirs({
     project_root.."/third_party/gflags/src",
   })
-  filter("platforms:Windows")
   files({
     "gl4_trace_dump_main.cc",
     "../../base/main_"..platform_suffix..".cc",

@@ -18,7 +18,6 @@ project("xenia-ui-gl")
   includedirs({
     project_root.."/third_party/gflags/src",
   })
-  filter("platforms:Windows")
   local_platform_files()
   removefiles({"*_demo.cc"})
 
@@ -45,7 +44,6 @@ project("xenia-ui-window-gl-demo")
   includedirs({
     project_root.."/third_party/gflags/src",
   })
-  filter("platforms:Windows")
   files({
     "../window_demo.cc",
     "gl_window_demo.cc",
