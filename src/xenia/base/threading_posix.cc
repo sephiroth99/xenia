@@ -23,6 +23,10 @@ namespace threading {
 
 // uint64_t ticks() { return mach_absolute_time(); }
 
+void EnableAffinityConfiguration() {
+  // TODO(sephiroth99)
+}
+
 uint32_t current_thread_system_id() {
   return static_cast<uint32_t>(syscall(SYS_gettid));
 }
@@ -33,6 +37,10 @@ void set_name(const std::string& name) {
 
 void set_name(std::thread::native_handle_type handle, const std::string& name) {
   pthread_setname_np(pthread_self(), name.c_str());
+}
+
+void SyncMemory() {
+  // TODO(sephiroth99)
 }
 
 void Sleep(std::chrono::microseconds duration) {
@@ -55,6 +63,27 @@ class PosixHandle : public T {
 
   pthread_t handle_;
 };
+
+WaitResult Wait(WaitHandle* wait_handle, bool is_alertable,
+                std::chrono::milliseconds timeout) {
+  // TODO(sephiroth99)
+  return WaitResult::kFailed;
+}
+
+WaitResult SignalAndWait(WaitHandle* wait_handle_to_signal,
+                         WaitHandle* wait_handle_to_wait_on, bool is_alertable,
+                         std::chrono::milliseconds timeout) {
+  // TODO(sephiroth99)
+  return WaitResult::kFailed;
+}
+
+std::pair<WaitResult, size_t> WaitMultiple(WaitHandle* wait_handles[],
+                                           size_t wait_handle_count,
+                                           bool wait_all, bool is_alertable,
+                                           std::chrono::milliseconds timeout) {
+  // TODO(sephiroth99)
+  return std::pair<WaitResult, size_t>(WaitResult::kFailed, 0);
+}
 
 class PosixThread : public PosixHandle<Thread> {
  public:
@@ -139,6 +168,15 @@ std::unique_ptr<Thread> Thread::Create(CreationParameters params,
   }
 
   return std::unique_ptr<PosixThread>(new PosixThread(handle));
+}
+
+Thread* Thread::GetCurrentThread() {
+  // TODO(sephiroth99)
+  return nullptr;
+}
+
+void Thread::Exit(int exit_code) {
+  // TODO(sephiroth99)
 }
 
 }  // namespace threading
